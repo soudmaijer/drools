@@ -27,10 +27,13 @@ public class FraudServiceTest {
         stopWatch.start();
         for (int i = 0; i < 10000; i++) {
             final boolean first = (i == 0);
-            new Thread((Runnable) () -> {
-                Errors<String> errors = fraudService.check(new Order(null, new Seller(3), new Address("3452RK", 53)));
-                if( first ) {
-                    log.info("Validated with {} errors {}", errors.getErrors().size(), errors.getErrors());
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Errors<String> errors = fraudService.check(new Order(null, new Seller(3), new Address("3452RK", 53)));
+                    if (first) {
+                        log.info("Validated with {} errors {}", errors.getErrors().size(), errors.getErrors());
+                    }
                 }
             }).run();
         }
