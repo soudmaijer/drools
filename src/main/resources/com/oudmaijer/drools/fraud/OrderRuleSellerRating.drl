@@ -1,0 +1,21 @@
+package com.oudmaijer.drools
+
+import com.oudmaijer.drools.fraud.model.*
+
+global Errors errors
+global RuleParam param
+
+rule "Seller rating rule"
+    when
+        $seller: Seller( rating > param.getInt(RuleParam.MINIMAL_SELLER_RATING) )
+    then
+        insertLogical(new IsSellerRatingOk($seller));
+end
+
+rule "Seller rating check"
+    when
+        $order: Order()
+                not( IsSellerRatingOk(seller == $order.seller) )
+    then
+        errors.add("Seller rating not ok: "+ $order);
+end

@@ -1,0 +1,14 @@
+package com.oudmaijer.drools
+
+import com.oudmaijer.drools.fraud.model.*
+import java.util.List
+
+global Errors errors
+global Blacklist blacklist
+
+rule "Seller shipment address on blacklist"
+    when
+        $order : Order( shipmentAddress memberOf blacklist.get(Blacklist.ADDRESSES) )
+    then
+        errors.add("Seller shipment address on blacklist: "+ $order);
+end
