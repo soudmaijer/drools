@@ -23,14 +23,6 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
                 .addResourceLocations(WEB_JAR_RESOURCE_LOCATION).setCachePeriod(0);
     }
 
-    @Bean
-    public InternalResourceViewResolver getInternalResourceViewResolver() {
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix(WEB_JAR_VIEW_RESOLVER_PREFIX);
-        resolver.setSuffix(WEB_JAR_VIEW_RESOLVER_SUFFIX);
-        return resolver;
-    }
-
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
