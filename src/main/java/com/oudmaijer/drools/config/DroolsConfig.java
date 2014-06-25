@@ -32,7 +32,7 @@ public class DroolsConfig {
 
     private Resource[] listRules() throws IOException {
         PathMatchingResourcePatternResolver pmrs = new PathMatchingResourcePatternResolver();
-        Resource[] resources = pmrs.getResources("classpath:com/oudmaijer/drools/**/*.drl");
+        Resource[] resources = pmrs.getResources("classpath*:com/oudmaijer/**/*.drl");
         return resources;
     }
 

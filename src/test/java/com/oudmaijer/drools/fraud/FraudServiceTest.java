@@ -5,6 +5,7 @@ import com.oudmaijer.drools.fraud.model.Address;
 import com.oudmaijer.drools.fraud.model.Errors;
 import com.oudmaijer.drools.fraud.model.Order;
 import com.oudmaijer.drools.fraud.model.Seller;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -25,7 +26,7 @@ public class FraudServiceTest {
     public void testOrderValidation() {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 100; i++) {
             final boolean first = (i == 0);
             new Thread(new Runnable() {
                 @Override
