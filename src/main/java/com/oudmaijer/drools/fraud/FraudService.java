@@ -22,11 +22,11 @@ public class FraudService {
     }
 
     @Metered
-    public <T> Errors<T> check(Order order) {
+    public Errors check(Order order) {
         KieSession ksession = kbase.newKieSession();
 
         // Setup globals
-        Errors<T> errors = new Errors<T>();
+        Errors errors = new Errors();
         addGlobalObjectsToSession(ksession, errors);
 
         // Add order to be validated
@@ -40,7 +40,7 @@ public class FraudService {
         return errors;
     }
 
-    private void addGlobalObjectsToSession(KieSession kieSession, Errors<?> errors) {
+    private void addGlobalObjectsToSession(KieSession kieSession, Errors errors) {
         kieSession.setGlobal("errors", errors);
         kieSession.setGlobal("blacklist", fraudRepository.getBlacklist());
         kieSession.setGlobal("param", fraudRepository.getRuleParam());

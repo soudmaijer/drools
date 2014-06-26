@@ -1,10 +1,12 @@
 package com.oudmaijer.drools.fraud.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 /**
  * Created by Stephan on 18-06-14.
  */
+@XmlRootElement
 public class Order {
 
     private Long orderId;

@@ -4,6 +4,7 @@ import com.oudmaijer.drools.fraud.model.Errors;
 import com.oudmaijer.drools.fraud.model.Order;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,8 +25,8 @@ public class FraudController {
     }
 
     @ApiOperation("Order fraud check")
-    @RequestMapping(value = "/order", method = {RequestMethod.POST})
-    public Errors<String> checkOrder(@RequestBody Order order) {
+    @RequestMapping(value = "/order", method = {RequestMethod.POST}, consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public Errors checkOrder(@RequestBody Order order) {
         return fraudService.check(order);
     }
 }

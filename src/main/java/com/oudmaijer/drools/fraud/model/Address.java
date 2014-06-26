@@ -1,12 +1,18 @@
 package com.oudmaijer.drools.fraud.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Created by Stephan on 19-06-14.
  */
+@XmlRootElement
 public class Address {
 
     private String zip;
     private int houseNumber;
+
+    public Address() {
+    }
 
     public Address(String zip, int houseNumber) {
         this.zip = zip;
