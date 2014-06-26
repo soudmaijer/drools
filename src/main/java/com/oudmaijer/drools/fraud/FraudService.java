@@ -30,6 +30,7 @@ public class FraudService {
         addGlobalObjectsToSession(ksession, errors);
 
         // Add order to be validated
+        ksession.insert(fraudRepository.getBlacklist());
         ksession.insert(order);
 
         // Fire all rules and destroy session.
@@ -42,8 +43,6 @@ public class FraudService {
 
     private void addGlobalObjectsToSession(KieSession kieSession, Errors errors) {
         kieSession.setGlobal("errors", errors);
-        kieSession.setGlobal("blacklist", fraudRepository.getBlacklist());
-        kieSession.setGlobal("param", fraudRepository.getRuleParam());
     }
 }
 
