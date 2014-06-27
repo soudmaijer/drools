@@ -11,6 +11,14 @@ public class Blacklist {
 
     public static final String ADDRESSES = "addresses";
 
+    public List<Object> getAddresses() {
+        return get(ADDRESSES);
+    }
+
+    public void setAddresses(List<Object> addresses) {
+
+    }
+
     private Map<String, List<Object>> lists = new ConcurrentHashMap<String, List<Object>>();
 
     public void addBlacklist(String key, List<Object> items) {

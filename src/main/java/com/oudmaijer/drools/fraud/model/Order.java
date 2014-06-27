@@ -13,6 +13,7 @@ public class Order {
     private Seller seller;
     private Address shipmentAddress;
     private List<OrderItem> orderItems;
+    private String paymentType;
 
     public Order() {
     }
@@ -21,6 +22,14 @@ public class Order {
         this.orderId = orderId;
         this.seller = seller;
         this.shipmentAddress = shipmentAddress;
+    }
+
+    public String getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
     }
 
     public List<OrderItem> getOrderItems() {

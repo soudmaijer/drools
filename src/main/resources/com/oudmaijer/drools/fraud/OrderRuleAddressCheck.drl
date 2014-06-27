@@ -4,11 +4,13 @@ import com.oudmaijer.drools.fraud.model.*
 import java.util.List
 
 global Errors errors
-global Blacklist blacklist
 
 rule "Seller shipment address on blacklist"
     when
-        $order : Order( shipmentAddress memberOf blacklist.get(Blacklist.ADDRESSES) )
+        Blacklist($addressBlacklist : addresses)
+
+        $order : Order( shipmentAddress memberOf $addressBlacklist,     // blacklist rule
+                        paymentType != "02" )                           // whitelist rule
     then
-        errors.add("Seller shipment address on blacklist: "+ $order);
+        errors.add("Seller shipment address on blacklist and not in allowed paymentType: "+ $order);
 end
