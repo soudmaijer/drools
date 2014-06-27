@@ -1,8 +1,8 @@
 package com.oudmaijer.drools.fraud;
 
-import com.oudmaijer.drools.fraud.model.Address;
-import com.oudmaijer.drools.fraud.model.Blacklist;
-import com.oudmaijer.drools.fraud.model.RuleParam;
+import com.oudmaijer.drools.fraud.rules.Address;
+import com.oudmaijer.drools.fraud.rules.Blacklist;
+import com.oudmaijer.drools.fraud.rules.RuleParam;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

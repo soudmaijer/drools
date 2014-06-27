@@ -1,7 +1,7 @@
 package com.oudmaijer.drools.fraud;
 
-import com.oudmaijer.drools.fraud.model.Errors;
-import com.oudmaijer.drools.fraud.model.Order;
+import com.oudmaijer.drools.fraud.rules.Errors;
+import com.oudmaijer.drools.fraud.rules.Order;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import org.springframework.http.MediaType;

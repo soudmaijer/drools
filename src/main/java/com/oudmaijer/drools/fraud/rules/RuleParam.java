@@ -1,4 +1,4 @@
-package com.oudmaijer.drools.fraud.model;
+package com.oudmaijer.drools.fraud.rules;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

@@ -1,0 +1,13 @@
+package com.oudmaijer.drools.fraud.rules
+
+global Errors errors
+
+rule "Seller shipment address on blacklist"
+    when
+        Blacklist($addressBlacklist : addresses)                        // Expose the addresses blacklist
+
+        $order : Order( shipmentAddress memberOf $addressBlacklist,     // Check blacklist rule
+                        paymentType != "02" )                           // And whitelist rule
+    then
+        errors.reject("This must be fraud!", $order);
+end

@@ -1,4 +1,4 @@
-package com.oudmaijer.drools.fraud.model;
+package com.oudmaijer.drools.fraud.rules;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 @XmlRootElement
 public class Order {
 
-    private Long orderId;
+    private String orderId;
     private Seller seller;
     private Address shipmentAddress;
     private List<OrderItem> orderItems;
@@ -18,7 +18,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(Long orderId, Seller seller, Address shipmentAddress) {
+    public Order(String orderId, Seller seller, Address shipmentAddress) {
         this.orderId = orderId;
         this.seller = seller;
         this.shipmentAddress = shipmentAddress;
@@ -56,11 +56,11 @@ public class Order {
         this.seller = seller;
     }
 
-    public Long getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Long orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 

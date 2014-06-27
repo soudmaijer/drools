@@ -2,12 +2,11 @@ package com.oudmaijer.drools.fraud;
 
 import com.codahale.metrics.annotation.ExceptionMetered;
 import com.codahale.metrics.annotation.Metered;
-import com.oudmaijer.drools.fraud.model.Errors;
-import com.oudmaijer.drools.fraud.model.Order;
+import com.oudmaijer.drools.fraud.rules.Errors;
+import com.oudmaijer.drools.fraud.rules.Order;
 import org.kie.api.KieBase;
 import org.kie.api.runtime.KieSession;
 import org.springframework.boot.actuate.metrics.GaugeService;
-import org.springframework.boot.actuate.metrics.repository.MetricRepository;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -17,14 +16,12 @@ public class FraudService {
 
     private final KieBase kbase;
     private final FraudRepository fraudRepository;
-    private final MetricRepository metricRepository;
     private final GaugeService gaugeService;
 
     @Inject
-    public FraudService(KieBase kbase, FraudRepository fraudRepository, MetricRepository metricRepository, GaugeService gaugeService) {
+    public FraudService(KieBase kbase, FraudRepository fraudRepository, GaugeService gaugeService) {
         this.kbase = kbase;
         this.fraudRepository = fraudRepository;
-        this.metricRepository = metricRepository;
         this.gaugeService = gaugeService;
     }
 

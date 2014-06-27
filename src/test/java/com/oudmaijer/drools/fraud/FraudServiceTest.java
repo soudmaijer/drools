@@ -1,10 +1,10 @@
 package com.oudmaijer.drools.fraud;
 
 import com.oudmaijer.drools.config.DroolsConfig;
-import com.oudmaijer.drools.fraud.model.Address;
-import com.oudmaijer.drools.fraud.model.Errors;
-import com.oudmaijer.drools.fraud.model.Order;
-import com.oudmaijer.drools.fraud.model.Seller;
+import com.oudmaijer.drools.fraud.rules.Address;
+import com.oudmaijer.drools.fraud.rules.Errors;
+import com.oudmaijer.drools.fraud.rules.Order;
+import com.oudmaijer.drools.fraud.rules.Seller;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -30,7 +30,7 @@ public class FraudServiceTest {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    Errors errors = fraudService.check(new Order(null, new Seller(3), new Address("3452RK", 53)));
+                    Errors errors = fraudService.check(new Order("1", new Seller(3), new Address("3452RK", 53)));
                     if (first) {
                         log.info("Validated with {} errors {}", errors.getErrors().size(), errors.getErrors());
                     }

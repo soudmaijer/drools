@@ -1,0 +1,11 @@
+package com.oudmaijer.drools.fraud.rules
+
+global Errors errors
+
+rule "Seller rating rule"
+    when
+        $order : Order()                            // Expose the order
+        Seller( rating < 5 ) from $order.seller     // Check if seller rating of seller of the order is high enough
+    then
+        errors.suspicious($order);
+end

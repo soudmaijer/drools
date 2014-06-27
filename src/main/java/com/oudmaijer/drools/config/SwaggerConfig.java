@@ -26,10 +26,4 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
         resolver.setSuffix(".jsp");
         return resolver;
     }
-
-//    @Override
-//    public void addViewControllers(ViewControllerRegistry registry) {
-//        registry.addViewController("/").setViewName("api");
-//        registry.addViewController("/index.html").setViewName("api");
-//    }
 }
